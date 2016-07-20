@@ -1,0 +1,86 @@
+<html>
+<meta charset="utf-8"/>
+<body>
+<h3> 题目</h3>
+<div style = "border-style:solid;">
+<pre>
+               A,B,C,D 都是数字，且：
+                   ABCD
+                 -  CDC
+              ----------
+                    ABC
+
+            请编写一个程序，计算A、B、C、D的值。
+</pre>
+</div> 
+<div>
+<script>
+	/*
+	*使用 Javascript 语言实现
+	*算法：
+	A,B,C,D  都是数字，说明它们的取值范围是：0,1,2,..,9，
+	通过循环语句(这里用 for 语句)对每个变量在取值范围中的各值进行匹配测试，满足题目条件时即放入结果中。
+	其中，题目条件可表示为：(A*1000+B*100+C*10+D) - (C*100+D*10+C) = (A*100+B*10+C)
+	*/
+
+	var a,b,c,d; //对应数字 A B C D
+	var n1,n2,n3;//对应题目算式中的被减数(ABCD)、减数(CDC)和差(ABC)
+	var r=[]; //存放结果的数组
+	for(a=0;a<=9;a++){
+		for(b=0;b<=9;b++){
+			for(c=0;c<=9;c++){
+				for(d=0;d<=9;d++){
+					n1 = a*1000+b*100+c*10+d;	//被减数(ABCD)
+					n2 = c*100+10*d+c;			//减数(CDC)
+					n3= a*100+b*10+c;			//差(ABC)
+
+					/*满足条件时：ABCD - CDC = ABC，放入结果数组中*/
+					if((n1-n2)==n3){
+						r.push ({a:a,b:b,c:c,d:d});
+					}
+				}
+			}	
+		}	
+	}
+	console.log(r); //输出结果
+	//document.write(JSON.stringify(r));
+</script>
+</div>
+<h3>程序</h3>
+<div style = "border-style:solid;">
+<pre>
+	/*
+	*使用 Javascript 语言实现
+	*算法：
+	A,B,C,D  都是数字，说明它们的取值范围是：0,1,2,..,9，
+	通过循环语句(这里用 for 语句)对每个变量在取值范围中的各值进行匹配测试，满足题目条件时即放入结果中。
+	其中，题目条件可表示为：(A*1000+B*100+C*10+D) - (C*100+D*10+C) = (A*100+B*10+C)
+	*/
+
+	var a,b,c,d; //对应数字 A B C D
+	var n1,n2,n3;//对应题目算式中的被减数(ABCD)、减数(CDC)和差(ABC)
+	var r=[]; //存放结果的数组
+	for(a=0;a<=9;a++){
+		for(b=0;b<=9;b++){
+			for(c=0;c<=9;c++){
+				for(d=0;d<=9;d++){
+					n1 = a*1000+b*100+c*10+d;	//被减数(ABCD)
+					n2 = c*100+10*d+c;			//减数(CDC)
+					n3= a*100+b*10+c;			//差(ABC)
+					/*满足条件时：ABCD - CDC = ABC，放入结果数组中*/
+					if((n1-n2)==n3){
+						r.push ({a:a,b:b,c:c,d:d});
+					}
+				}
+			}	
+		}	
+	}
+	console.log(r); //输出结果
+
+	/*算出最终结果有两组：
+	r = [ { a: 0, b: 0, c: 0, d: 0 }, { a: 1, b: 0, c: 9, d: 8 } ]
+	*/
+</pre>
+</div>
+</body>
+</html>
